@@ -22,7 +22,6 @@ static int		keyhook(int keycode, void *param)
 
 	while (++i < 6 && !dna->f[i](keycode, dna))
 		;
-	ft_putnbr(i);
 	mlx_destroy_image(dna->mlx, dna->image->image_ptr);
 	dna->image->image_ptr = mlx_new_image(dna->mlx, WIDTH, HEIGHT);
 	dna->image->image = mlx_get_data_addr(dna->image->image_ptr, \
@@ -49,7 +48,6 @@ static int		mouse_hook(int keycode, int x, int y, void *param)
 	}
 	else if ((keycode == 2 || keycode == 5) && y >= 0)
 	{
-		ft_putendl("bite");
 		dna->x1 += (((float)x - (WIDTH / 2)) / dna->bonus->zoom);
 		dna->y1 += (((float)y - (HEIGHT / 2)) / dna->bonus->zoom);
 		dna->bonus->zoom *= 0.9;
@@ -64,7 +62,6 @@ static int		mouse_hook(int keycode, int x, int y, void *param)
 		draw_mandelbrot(dna);
 	else if (dna->fractale == 3)
 		draw_tricorn(dna);
-	printf("zoom-> %Lf\n\n", dna->bonus->zoom);
 	return (0);
 }
 
